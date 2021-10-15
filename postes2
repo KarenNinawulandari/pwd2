@@ -1,0 +1,121 @@
+
+Setting environment for using XAMPP for Windows.
+user@DESKTOP-1HPHFPK c:\xampp
+#  mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 18
+Server version: 10.4.14-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database akademik;
+ERROR 1007 (HY000): Can't create database 'akademik'; database exists
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| akademik           |
+| apotek             |
+| apotik             |
+| appl               |
+| db_rweb20          |
+| information_schema |
+| kk4                |
+| krs                |
+| login              |
+| login_md           |
+| login_md5          |
+| loginn             |
+| mahasiswa          |
+| mtpapotek          |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| post4kk            |
+| rweb               |
+| sekolah            |
+| sekolahkita        |
+| sekolahkitaa       |
+| sekolahkitaaa      |
+| test               |
+| web                |
++--------------------+
+25 rows in set (0.041 sec)
+
+MariaDB [(none)]> create database akademik;
+ERROR 1007 (HY000): Can't create database 'akademik'; database exists
+MariaDB [(none)]> use akademik;
+Database changed
+MariaDB [akademik]> create table mahasiswa(
+    -> nim varchar(5),
+    -> nama varchar(50),
+    -> jkel varchar(1),
+    -> alamat text,
+    -> tgllhr date,
+    -> primary key (nim));
+ERROR 1050 (42S01): Table 'mahasiswa' already exists
+MariaDB [akademik]> SELECT*FROM mahasiswa;
++-------+-------------+------+----------+------------+
+| nim   | nama        | jkel | alamat   | tgllhr     |
++-------+-------------+------+----------+------------+
+| MHS01 | siti Aminah | p    | solo     | 1995-10-01 |
+| MHS02 | Rita        | p    | solo     | 1999-01-01 |
+| MHS03 | Amirudin    | L    | semarang | 1998-08-11 |
+| MHS04 | Siti Maryam | p    | JAKARTA  | 1995-04-15 |
++-------+-------------+------+----------+------------+
+4 rows in set (0.125 sec)
+
+MariaDB [akademik]> SELECT*FROM mahasiswa WHERE alamat='solo';
++-------+-------------+------+--------+------------+
+| nim   | nama        | jkel | alamat | tgllhr     |
++-------+-------------+------+--------+------------+
+| MHS01 | siti Aminah | p    | solo   | 1995-10-01 |
+| MHS02 | Rita        | p    | solo   | 1999-01-01 |
++-------+-------------+------+--------+------------+
+2 rows in set (0.007 sec)
+
+MariaDB [akademik]> ALTER TABLE mahasiswa ADD email varchar (50);
+Query OK, 0 rows affected (0.036 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [akademik]> SELECT*FROM mahasiswa;
++-------+-------------+------+----------+------------+-------+
+| nim   | nama        | jkel | alamat   | tgllhr     | email |
++-------+-------------+------+----------+------------+-------+
+| MHS01 | siti Aminah | p    | solo     | 1995-10-01 | NULL  |
+| MHS02 | Rita        | p    | solo     | 1999-01-01 | NULL  |
+| MHS03 | Amirudin    | L    | semarang | 1998-08-11 | NULL  |
+| MHS04 | Siti Maryam | p    | JAKARTA  | 1995-04-15 | NULL  |
++-------+-------------+------+----------+------------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS05,'karen','p','lampung',1999-11-21','karenninaw@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'karen','p','lampung',1999-11-21','karenninaw@gmail.com')' at line 1
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS05','karen','p','lampung',1999-11-21','karenninaw@gmail.com');
+    '> ;
+    '>
+    '> ;
+    '> INSERT INTO mahasiswa VALUES ('MHS05','karen','p','lampung',1999-11-21','karenninaw@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '','karenninaw@gmail.com');
+;
+
+;
+INSERT INTO mahasiswa VALUES ('MHS05','karen'...' at line 1
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS05','karen','p','lampung','1999-11-21','karenninaw@gmail.com');
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [akademik]> SELECT*FROM mahasiswa;
++-------+-------------+------+----------+------------+----------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | email                |
++-------+-------------+------+----------+------------+----------------------+
+| MHS01 | siti Aminah | p    | solo     | 1995-10-01 | NULL                 |
+| MHS02 | Rita        | p    | solo     | 1999-01-01 | NULL                 |
+| MHS03 | Amirudin    | L    | semarang | 1998-08-11 | NULL                 |
+| MHS04 | Siti Maryam | p    | JAKARTA  | 1995-04-15 | NULL                 |
+| MHS05 | karen       | p    | lampung  | 1999-11-21 | karenninaw@gmail.com |
++-------+-------------+------+----------+------------+----------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [akademik]>
